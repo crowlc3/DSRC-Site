@@ -1,8 +1,8 @@
 body {
     background-color: white;
     font-family: Arial;
-    padding-left: 300px;
-    padding-right: 300px;
+    padding-left: 500px;
+    padding-right: 500px;
     position: center;
 }
 
@@ -12,34 +12,24 @@ body {
     margin-right: auto;
   }
 
-h1 {
-    color: navy;
-    margin-left: 20px;
-}
-
 .topnav a:hover{
-    color: grey;
+    color: gray;
 }
 
 .topnav {
     background-color: black;
     position: center;
     overflow: hidden;
-    width: 81%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.topnav ul{
-    display: inline-block;
 }
 
 .topnav a{
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
-    padding: 14px 16px;
+    padding: 17px;
 }
 
 a.current {
@@ -63,7 +53,7 @@ a.current {
 .row {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 4px;
+    position: center;
   }
   
   /* Create two equal columns that sits next to each other */
@@ -75,5 +65,11 @@ a.current {
   .column img {
     margin-top: 2px;
     vertical-align: middle;
-    width: 100px;
+    width: 64px;
   }
+
+.form{
+  padding-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
