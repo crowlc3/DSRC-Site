@@ -1,9 +1,11 @@
 body {
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     font-family: Arial;
-    padding-left: 500px;
-    padding-right: 500px;
     position: center;
+    width: 900px;
+    flex: 1 0 auto;
 }
 
 .center {
@@ -22,25 +24,26 @@ body {
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
 .topnav a{
     color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 20.5px;
     text-decoration: none;
     padding: 17px;
 }
 
-a.current {
-    background:red;
-    color:white;
-  }
-
-  .topnav a.current{
+ a.current{
     color: white;
     background-color: red;
-  }
+    color: white;
+    text-align: center;
+    font-size: 20.5px;
+    text-decoration: none;
+    padding: 17px;
+ }
 
   .bolded {
       font-weight: bold;
@@ -72,4 +75,10 @@ a.current {
   padding-top: 40px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.footer{
+  background-color: black;
+  color: white;
+  bottom: 100px;
 }
