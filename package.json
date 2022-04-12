@@ -1,0 +1,14 @@
+{
+  "name": "dsrc_api",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Caitlin Crowley <crowlc3@rpi.edu>",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd api && node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "pg": "^8.7.3"
+  }
+}
