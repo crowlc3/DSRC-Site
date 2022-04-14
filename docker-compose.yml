@@ -16,6 +16,7 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "8080:8080"
+      - "25:25"
     depends_on:
       - db
     env_file: .env
