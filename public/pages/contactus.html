@@ -52,16 +52,45 @@
                 });
               } 
           </script>
-        Name:<br>
-        <input type="text" size="40" id="Contact-Name"><br><br>
-        Email:<br>
-        <input type="email" size="40" id="Contact-Email"><br><br> 
-        Message:<br> 
-        <textarea id="Contact-Message" rows="7" cols="40">
-        </textarea><br><br>
-        <button onclick="sendForm()">Send</button>
+        
+        <section class="bg-light py-5">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                    <h2 class="fw-bolder">Get in touch</h2>
+                    <p class="lead mb-0">We'd love to hear from you</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class = "form">
+                            <!-- Name input-->
+                            <div class="form-floating mb-0">
+                                Name:<br>
+                                <input type="text" class="form-control" size="40" id="Contact-Name"><br><br>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-0">
+                                Email:<br>
+                                <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-0">
+                                Phone:<br>
+                                <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                Message:<br> 
+                                <textarea id="Contact-Message" class="form-control" style="height: 10rem">
+                                </textarea><br><br>
+                            </div>
+                            <button onclick="sendForm()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</div>
 
 
         <!-- Footer-->
