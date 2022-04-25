@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Business Frontpage - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <title>Contact Us</title>
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -17,7 +15,7 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-                <a class="navbar-brand" href="#!">DSRC</a>
+                <a class="navbar-brand" href="../index.html">DSRC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -78,14 +76,21 @@
                                 Phone:<br>
                                 <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
                             </div>
+                            <div class="form-floating mb-3">
+                                Select Dataset to Request:<br>
+                                <select name="dataset" id="dataset" class="form-control" size="20">
+                                    <option value="CancerData">Cancer Data</option>
+                                    <option value="EEGData">EEG Data</option>
+                                    <option value="TuberculosisData">Tuberculosis Data</option>
+                                </select>
+                            </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
                                 Message:<br> 
-                                <textarea id="Contact-Message" class="form-control" style="height: 10rem">
-                                </textarea><br><br>
+                                <textarea id="Contact-Message" class="form-control" style="height: 10rem"> </textarea>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-lg disabled" onclick="sendForm()">Send</button>
+                                <button class="btn btn-primary btn-lg" onclick="sendForm()">Send</butto>
                             </div>
                         </div>
                     </div>
@@ -96,18 +101,21 @@
 
 
         <!-- Footer-->
+        <!-- Footer-->
         <footer class="py-3 bg-grey">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Rensselaer Polytechnic Institute 2022 | 110 Eighth Street | Troy NY | 12180 | (518)-276-6000</p></div>
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">
+                    Copyright &copy; Rensselaer Polytechnic Institute 2022 | 110 Eighth Street | Troy NY | 12180 | (518)-276-6000
+                </p>
+                <p class="m-0 text-center text-bot small" size = "10">
+                    Site design by Caitlin Crowley
+                </p>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <script src="validator.js"></script>
         <script src="index.js"></script>
