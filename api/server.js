@@ -1,6 +1,8 @@
 const express = require("express");
 const pool = require("./db");
 const sgMail = require("@sendgrid/mail");
+const htmlEncoder = require("html-encoder-decoder");
+
 
 require("dotenv").config();
 
@@ -21,20 +23,26 @@ app.get("/", (req, res) => {
   res.sendFile(public);
 });
 
+
 app.post("/send", (req, res) => {
-  console.log("jiofjeifje" + req.body.name)
+  userName = htmlEncoder.encode(req.body.name);
+  userEmail = htmlEncoder.encode(req.body.email);
+  userMessage = htmlEncoder.encode(req.body.message);
+  userDataSet = htmlEncoder.encode(req.body.dataset);
+  var htmlBody = "Incoming DSRC Request: <br></br>"+
+                 "Name: " + userName + "<br></br>" +
+                 "Email: " + userEmail + "<br></br>" +
+                 "DataSet: " + userDataSet + "<br></br>" +
+                 "Message: " + userMessage + "<br></br>"
   const msg = {
-    to: 'dsrcacc@gmail.com', // Change to your recipient
-    from: 'dsrcacc@gmail.com', // Change to your verified sender
-    subject: 'Sending with SendGrid is Fun',
-    text: 'Message: ' + req.body.message + '\nName: ' + req.body.name + '\nEmail: ' + req.body.email,
-    html: 'Message: ' + req.body.message + '\nName: ' + req.body.name + '\nEmail: ' + req.body.email
+    to: "dsrcrpi@gmail.com",
+    from: "dsrcrpi@gmail.com",
+    subject: "DSRC Email Request from " + req.body.email,
+    text: "Incoming DSRC Request: " + "Message: " + req.body.message + "\r\nName: " + req.body.name + "\r\nEmail: " + req.body.email + "\r\nDataSet: " + req.body.dataset,
+    html: htmlBody
   }
   sgMail
     .send(msg)
-    .then(() => {
-      console.log('Email sent')
-    })
     .catch((error) => {
       console.error(error)
     })

@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -32,31 +33,53 @@
             <!-- Sample HTML Form -->
       <div class = "form">
           <script>
-              function sendForm () {
-
-                fetch("/send", {
-                    method: "post", //2.
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: document.getElementById("Contact-Name").value,
-                        email: document.getElementById("Contact-Email").value,
-                        message: document.getElementById("Contact-Message").value
-                    })
-                }).then((response) => {
-                    return response.json();
-                });
-              } 
-          </script>
+                function sendForm () {
+                    if (document.getElementById("Contact-Name").value == ""
+                        || document.getElementById("Contact-Email").value == ""
+                        || document.getElementById("Contact-Message").value == ""){
+                        let err = "";
+                        if (document.getElementById("Contact-Name").value == ""){
+                            err += "Contact Name Empty\n"
+                        }
+                        if (document.getElementById("Contact-Email").value == ""){
+                            err += "Contact Email Empty\n"
+                        }
+                        if (document.getElementById("Contact-Message").value == ""){
+                            err += "Contact Message Empty\n"
+                        }
+                            alert("Please fill out all required fields:\n"+err);
+                    }
+                    else{
+                        fetch("/send", {
+                            method: "post",
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                        },
+                            body: JSON.stringify({
+                            name: document.getElementById("Contact-Name").value,
+                            email: document.getElementById("Contact-Email").value,
+                            message: document.getElementById("Contact-Message").value,
+                            dataset: document.getElementById("Contact-DataSet").value
+                        })
+                    }).then((response) => {
+                        return response.json();
+                    });
+                    alert("Thanks for your response!");
+                    document.getElementById("Contact-Name").value = "";
+                    document.getElementById("Contact-Email").value = "";
+                    document.getElementById("Contact-Message").value = "";
+                    document.getElementById("Contact-DataSet").value = "";
+                }
+            }
+        </script>
+ 
         
         <section class="bg-light py-5">
             <div class="container px-5 my-5 px-5">
                 <div class="text-center mb-5">
                     <div class="feature bg-grey bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
                     <h2 class="fw-bolder">Get in touch</h2>
-                    <p class="lead mb-0">We'd love to hear from you</p>
                 </div>
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
@@ -71,15 +94,10 @@
                                 Email:<br>
                                 <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
                             </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-0">
-                                Phone:<br>
-                                <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
-                            </div>
                             <div class="form-floating mb-3">
                                 Select Dataset to Request:<br>
-                                <select name="dataset" id="dataset" class="form-control" size="20">
-                                    <option value="CancerData">Cancer Data</option>
+                                <select name="dataset" id="Contact-DataSet" class="form-control" size="10">
+                                    <option value="CancerData">Cancer Image Data</option>
                                     <option value="EEGData">EEG Data</option>
                                     <option value="TuberculosisData">Tuberculosis Data</option>
                                 </select>
@@ -87,10 +105,14 @@
                             <!-- Message input-->
                             <div class="form-floating mb-3">
                                 Message:<br> 
-                                <textarea id="Contact-Message" class="form-control" style="height: 10rem"> </textarea>
+                                <textarea id="Contact-Message" class="form-control" style="height: 10rem"></textarea>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-lg" onclick="sendForm()">Send</butto>
+                                <button if = "btn" class="btn btn-primary btn-lg g-recaptcha" 
+                                    data-sitekey="6Lf4Dp8fAAAAAELE5UIFX_xTuqsYBxHDuPee9eed"
+                                    data-callback="sendForm">
+                                    Send
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -98,9 +120,6 @@
             </div>
         </section>
     </div>
-
-
-        <!-- Footer-->
         <!-- Footer-->
         <footer class="py-3 bg-grey">
             <div class="container px-5">
@@ -109,15 +128,11 @@
                 </p>
                 <p class="m-0 text-center text-bot small" size = "10">
                     Site design by Caitlin Crowley
+                    <a class="btn px-0 py-0" href="https://www.linkedin.com/in/caitlin-crowley-a9a1a4164/"><i class="bi bi-linkedin"></i></a>
                 </p>
             </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-        <script src="validator.js"></script>
-        <script src="index.js"></script>
     </body>
 </html>

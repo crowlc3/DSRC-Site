@@ -115,7 +115,8 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 .img-people {
-  margin-top: 2px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   vertical-align: middle;
   width: 100px;
   border-radius: 10px;
@@ -7787,7 +7788,7 @@ textarea.form-control-lg {
 
 .text-bot {
   --bs-text-opacity: 1;
-  color: #424242 !important;
+  color: #ababab !important;
 }
 
 .text-body {
@@ -7874,6 +7875,11 @@ textarea.form-control-lg {
 .bg-grey {
   --bs-bg-opacity: 1;
   background-color: grey !important;
+}
+
+.bg-red {
+  --bs-bg-opacity: 1;
+  background-color: red !important;
 }
 
 .bg-black {
