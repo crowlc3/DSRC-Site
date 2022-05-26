@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Contact Us</title>
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/styles.css" rel="stylesheet" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="../index.html">DSRC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="databank.html">Databank</a></li>
+                        <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://idea.rpi.edu/media">News and Events</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container px-4 px-lg-5">
+            <!-- Sample HTML Form -->
+      <div class = "form">
+          <script>
+                function sendForm () {
+                    if (document.getElementById("Contact-Name").value == ""
+                        || document.getElementById("Contact-Email").value == ""
+                        || document.getElementById("Contact-Message").value == ""){
+                        let err = "";
+                        if (document.getElementById("Contact-Name").value == ""){
+                            err += "Contact Name Empty\n"
+                        }
+                        if (document.getElementById("Contact-Email").value == ""){
+                            err += "Contact Email Empty\n"
+                        }
+                        if (document.getElementById("Contact-Message").value == ""){
+                            err += "Contact Message Empty\n"
+                        }
+                            alert("Please fill out all required fields:\n"+err);
+                    }
+                    else{
+                        fetch("/send", {
+                            method: "post",
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                        },
+                            body: JSON.stringify({
+                            name: document.getElementById("Contact-Name").value,
+                            email: document.getElementById("Contact-Email").value,
+                            message: document.getElementById("Contact-Message").value,
+                            dataset: document.getElementById("Contact-DataSet").value
+                        })
+                    }).then((response) => {
+                        return response.json();
+                    });
+                    alert("Thanks for your response!");
+                    document.getElementById("Contact-Name").value = "";
+                    document.getElementById("Contact-Email").value = "";
+                    document.getElementById("Contact-Message").value = "";
+                    document.getElementById("Contact-DataSet").value = "";
+                }
+            }
+        </script>
+ 
+        
+        <section class="bg-light py-5">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-grey bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                    <h2 class="fw-bolder">Get in touch</h2>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class = "form">
+                            <!-- Name input-->
+                            <div class="form-floating mb-0">
+                                Name:<br>
+                                <input type="text" class="form-control" size="40" id="Contact-Name"><br><br>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-0">
+                                Email:<br>
+                                <input type="email" class="form-control" size="40" id="Contact-Email"><br><br>
+                            </div>
+                            <div class="form-floating mb-3">
+                                Select Dataset to Request:<br>
+                                <select name="dataset" id="Contact-DataSet" class="form-control" size="10">
+                                    <option value="CancerData">Cancer Image Data</option>
+                                    <option value="EEGData">EEG Data</option>
+                                    <option value="TuberculosisData">Tuberculosis Data</option>
+                                </select>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                Message:<br> 
+                                <textarea id="Contact-Message" class="form-control" style="height: 10rem"></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button if = "btn" class="btn btn-primary btn-lg g-recaptcha" 
+                                    data-sitekey="6Lf4Dp8fAAAAAELE5UIFX_xTuqsYBxHDuPee9eed"
+                                    data-callback="sendForm">
+                                    Send
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+        <!-- Footer-->
+        <footer class="py-3 bg-grey">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">
+                    Copyright &copy; Rensselaer Polytechnic Institute 2022 | 110 Eighth Street | Troy NY | 12180 | (518)-276-6000
+                </p>
+                <p class="m-0 text-center text-bot small" size = "10">
+                    Site design by Caitlin Crowley
+                    <a class="btn px-0 py-0" href="https://www.linkedin.com/in/caitlin-crowley-a9a1a4164/"><i class="bi bi-linkedin"></i></a>
+                </p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
